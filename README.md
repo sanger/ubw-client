@@ -24,10 +24,10 @@ Configuration example:
 # The site must be set before using the gem, as it is the base URL for all API calls.
 #
 # By default ENV['UBW_SITE'] is used but it can be set like so
-UBW::Client.site = 'https://ubw.sanger.ac.uk' 
+Ubw::Client.site = 'https://ubw.sanger.ac.uk' 
 
 # A Faraday::Connection can be obtained and configured before use (perhaps to disable a proxy)
-UBW::Client.connection do |connection|
+Ubw::Client.connection do |connection|
   connection.proxy {}
   connection.use SomeCustomMiddleware
 end
