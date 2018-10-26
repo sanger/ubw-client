@@ -9,7 +9,7 @@ The goal of this gem is to provide a Ruby-ish wrapper for the UBW API.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'https://github.com/sanger/ubw-client', '~> 0.1'
+gem 'ubw-client', '~> 0.1', git: 'https://github.com/sanger/ubw-client.git'
 ```
 
 And then execute:
