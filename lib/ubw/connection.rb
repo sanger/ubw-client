@@ -16,9 +16,10 @@ module Ubw
         connection.request :json
         connection.response :json, :content_type => /\bjson$/
         connection.use Ubw::Middleware::Status
-        connection.adapter Faraday.default_adapter
 
         yield connection if block_given?
+        
+        connection.adapter Faraday.default_adapter
       end
     end
 
