@@ -5,6 +5,13 @@ cache: bundler
 rvm:
   - 2.4.1
 before_install: gem install bundler -v 1.16.4
+env:
+  global:
+    - CC_TEST_REPORTER_ID=b07859ceb064fed550f1ce8eb913053ad9b99271a9a0837bf94491262516214e
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 branches:
   only:
     - devel
@@ -15,3 +22,5 @@ install:
   - bundle install --jobs=3 --retry=3
 script:
   - bundle exec rspec
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
