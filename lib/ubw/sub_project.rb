@@ -3,6 +3,6 @@ module Ubw
     include Ubw::Queries::Find
     include Ubw::Queries::Where
     include Ubw::Queries::All
-    @endpoint = '/subprojects'
+    @endpoint = 'subprojects'
   end
 end

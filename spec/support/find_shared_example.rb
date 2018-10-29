@@ -1,6 +1,7 @@
 RSpec.shared_examples "find" do
 
-  let(:resource) { { unitPrice: "123.45", costCode: "S0002", status: 'N', isActive: true } }
+  let(:found_resource) { { unitPrice: "123.45", costCode: "S0002", status: 'N', isActive: true } }
+  let(:find_response) { double('Response', body: found_resource) }
   let(:result) { described_class.find('1234') }
 
   context 'when the resource is found' do
@@ -8,7 +9,7 @@ RSpec.shared_examples "find" do
     before do
       allow_any_instance_of(Ubw::Connection).to receive(:get)
         .with("#{described_class.endpoint}/1234")
-        .and_return(resource)
+        .and_return(find_response)
     end
 
     it "returns an instance of #{described_class}" do

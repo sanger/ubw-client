@@ -3,7 +3,8 @@ module Ubw
     module Find
       module ClassMethods
         def find(id)
-          new(Ubw::Client.connection.get("#{endpoint}/#{id}"))
+          response = Ubw::Client.connection.get("#{endpoint}/#{id}")
+          new(response.body)
         end
 
       end

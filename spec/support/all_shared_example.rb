@@ -1,6 +1,6 @@
 RSpec.shared_examples "all" do
 
-  let(:result_set_resource) do
+  let(:all_resource) do
     { resultCount: 2,
       items: [
         { writer: 'Lin Manuel' },
@@ -9,10 +9,12 @@ RSpec.shared_examples "all" do
     }
   end
 
+  let(:all_response) { double('Response', body: all_resource) }
+
   it 'returns a Ubw::ResultSet' do
     expect_any_instance_of(Ubw::Connection).to receive(:get)
       .with(described_class.endpoint)
-      .and_return(result_set_resource)
+      .and_return(all_response)
 
     result = described_class.all
 
