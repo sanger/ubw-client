@@ -9,7 +9,7 @@ module Ubw
       attr_reader :endpoint
     end
 
-    def initialize(resource = nil)
+    def initialize(resource)
       super(format_keys(resource))
     end
 

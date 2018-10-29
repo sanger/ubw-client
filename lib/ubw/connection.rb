@@ -14,7 +14,7 @@ module Ubw
 
       @faraday = Faraday.new(options) do |connection|
         connection.request :json
-        connection.response :json, content_type: /\bjson$/
+        connection.response :json, content_type: /\bjson$/, parser_options: { symbolize_names: true }
         connection.use Ubw::Middleware::Status
 
         yield connection if block_given?

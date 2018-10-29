@@ -8,7 +8,7 @@ RSpec.describe Ubw::Price do
   describe 'Ubw::Price#endpoint' do
 
     it 'is prices' do
-      expect(Ubw::Price.endpoint).to eq('/prices')
+      expect(Ubw::Price.endpoint).to eq('prices')
     end
 
   end

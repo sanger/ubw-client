@@ -2,6 +2,6 @@ module Ubw
   class Price < Resource
     include Ubw::Queries::Where
     include Ubw::Queries::All
-    @endpoint = '/prices'
+    @endpoint = 'prices'
   end
 end

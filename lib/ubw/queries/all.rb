@@ -3,7 +3,8 @@ module Ubw
     module All
       module ClassMethods
         def all
-          Ubw::ResultSet.new(Ubw::Client.connection.get(endpoint), self)
+          response = Ubw::Client.connection.get(endpoint)
+          Ubw::ResultSet.new(response.body, self)
         end
       end
 

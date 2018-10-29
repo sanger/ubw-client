@@ -13,7 +13,9 @@ module Ubw
             obj
           end
 
-          Ubw::ResultSet.new(Ubw::Client.connection.get(endpoint, formatted_params), self)
+          response = Ubw::Client.connection.get(endpoint, formatted_params)
+
+          Ubw::ResultSet.new(response.body, self)
         end
       end
 

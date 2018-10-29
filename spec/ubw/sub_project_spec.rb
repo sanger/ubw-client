@@ -9,7 +9,7 @@ RSpec.describe Ubw::SubProject do
   describe 'Ubw::SubProject#endpoint' do
 
     it 'is subprojects' do
-      expect(Ubw::SubProject.endpoint).to eq('/subprojects')
+      expect(Ubw::SubProject.endpoint).to eq('subprojects')
     end
 
   end
