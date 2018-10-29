@@ -26,37 +26,40 @@ module Ubw
     class ConnectionError < ApiError
     end
 
-
     class ServerError < ApiError
       def message
-        "Internal server error"
+        'Internal server error'
       end
     end
 
     class Conflict < ServerError
       def message
-        "Resource already exists"
+        'Resource already exists'
       end
     end
 
     class NotFound < ServerError
       attr_reader :uri
+
       def initialize(uri)
         @uri = uri
       end
+
       def message
-        "Couldn't find resource at: #{uri.to_s}"
+        "Couldn't find resource at: #{uri}"
       end
     end
 
     class UnexpectedStatus < ServerError
       attr_reader :code, :uri
+
       def initialize(code, uri)
         @code = code
         @uri = uri
       end
+
       def message
-        "Unexpected response status: #{code} from: #{uri.to_s}"
+        "Unexpected response status: #{code} from: #{uri}"
       end
     end
   end

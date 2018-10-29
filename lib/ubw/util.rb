@@ -1,15 +1,14 @@
 module Ubw
   class Util
-
     # "costCode" => "cost_code"
     def self.snakify(str)
-      str.to_s.each_char.with_index.reduce("") do |s, args|
+      str.to_s.each_char.with_index.reduce('') do |new_str, args|
         char, index = args
         if /[[:upper:]]/.match(char)
-          s << "_" unless index == 0
-          s << char.downcase
+          new_str << '_' unless index.zero?
+          new_str << char.downcase
         else
-          s << char
+          new_str << char
         end
       end
     end
@@ -28,6 +27,5 @@ module Ubw
       end
       new_str
     end
-
   end
 end

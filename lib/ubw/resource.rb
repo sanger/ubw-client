@@ -5,31 +5,29 @@ module Ubw
   # Good: Means gem doesn't have to change when the API does
   # Bad: Any nonsense could be passed in
   class Resource < OpenStruct
-
-    def self.endpoint
-      @endpoint
+    class << self
+      attr_reader :endpoint
     end
 
     def initialize(resource = nil)
       super(format_keys(resource))
     end
 
-  private
+    private
 
     # JSON resources usually have camelCase field names
     # Want the methods on our resources to be snake_case
     def format_keys(resource)
-      resource.keys.reduce({}) do |memo, key|
+      resource.keys.each_with_object({}) do |key, obj|
         value = resource[key]
 
         formatted_key = Ubw::Util.snakify(key)
-        formatted_key << '?' if !!value == value # Add a ? to the key if value is a Boolean
+        # Add a ? to the key if value is a Boolean
+        formatted_key << '?' if !!value == value
 
-        memo[formatted_key] = value
-
-        memo
+        obj[formatted_key] = value
+        obj
       end
     end
-
   end
 end
