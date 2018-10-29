@@ -14,13 +14,19 @@ module Ubw
 
       @faraday = Faraday.new(options) do |connection|
         connection.request :json
-        connection.response :json, content_type: /\bjson$/, parser_options: { symbolize_names: true }
+        connection.response :json, response_options
         connection.use Ubw::Middleware::Status
 
         yield connection if block_given?
 
         connection.adapter Faraday.default_adapter
       end
+    end
+
+    private
+
+    def response_options
+      { content_type: /\bjson$/, parser_options: { symbolize_names: true } }
     end
   end
 end
