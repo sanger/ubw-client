@@ -7,3 +7,7 @@ plugins:
     enabled: true
   rubocop:
     enabled: true
+exclude_patterns:
+  - "Gemfile"
+  - "ubw-client.gemspec"
+  - "spec/"
