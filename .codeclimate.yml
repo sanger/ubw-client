@@ -5,8 +5,14 @@ plugins:
     enabled: true
   reek:
     enabled: true
+    checks:
+      IrresponsibleModule:
+        enabled: false
   rubocop:
     enabled: true
+    checks:
+      Rubocop/Style/Documentation:
+        enabled: false
 exclude_patterns:
   - "Gemfile"
   - "ubw-client.gemspec"

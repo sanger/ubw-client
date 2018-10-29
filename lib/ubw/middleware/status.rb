@@ -12,6 +12,8 @@ module Ubw
       protected
 
       def handle_status(code, env)
+        url = env[:url]
+
         case code
         when 200..399
           # Do Nothing
@@ -20,7 +22,7 @@ module Ubw
         when 403
           raise Errors::AccessDenied, env
         when 404
-          raise Errors::NotFound, env[:url]
+          raise Errors::NotFound, url
         when 409
           raise Errors::Conflict, env
         when 422
@@ -30,7 +32,7 @@ module Ubw
         when 500..599
           raise Errors::ServerError, env
         else
-          raise Errors::UnexpectedStatus.new(code, env[:url])
+          raise Errors::UnexpectedStatus.new(code, url)
         end
       end
     end
