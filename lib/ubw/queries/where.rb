@@ -8,7 +8,10 @@ module Ubw
         # e.g. where(cost_code: "S0001", module_name: ["WGS", "Library Prep"])
         def where(params)
           formatted_params = params.keys.each_with_object({}) do |key, obj|
-            value = params[key].is_a?(Array) ? params[key].join(',') : params[key]
+            value = params[key]
+            if !(value.is_a? String) && value.respond_to?(:to_a)
+              value = value.to_a
+            end
             obj[Ubw::Util.camelify(key).to_sym] = value
             obj
           end
