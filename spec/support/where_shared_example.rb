@@ -20,9 +20,9 @@ RSpec.shared_examples "where" do
     described_class.where(cost_code: 'S1234', sub_cost_code: 'S1234-100')
   end
 
-  it 'converts param values that are Arrays to a String' do
+  it 'converts param values that are arrays to an array' do
     expect_any_instance_of(Ubw::Connection).to receive(:get)
-      .with("#{described_class.endpoint}", { costCode: 'S1234,S5678,S9012' })
+      .with("#{described_class.endpoint}", { costCode: ['S1234','S5678','S9012'] })
       .and_return(where_response)
 
     described_class.where(cost_code: ['S1234', 'S5678', 'S9012'])
