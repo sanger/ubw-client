@@ -63,7 +63,7 @@ Both also include `where` and `all` class methods.
 Result Sets represent a collection of resources e.g. a list of `Ubw::Price`s. `#result_count` will give the size of the collection:
 
 ```ruby
-Ubw::Price.find(module_name: 'WGS').result_count
+Ubw::Price.where(module_name: 'WGS').result_count
 # => 3
 ```
 
